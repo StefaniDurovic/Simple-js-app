@@ -1,9 +1,30 @@
-// array of objects
-let  pokemonList = [
+// IIFE
+let  pokemonRepository = (function() {
+
+   let pokemonList = [   
         {name:'Pidgeotto', height:'1', types:['flying','normal']},
         {name:'Venomoth', height:'1.5', types:['bug','poison']},
         {name:'Sandshrew', height:'0.6', types:['ground']}
-];
+    ];
+
+    function add(pokemon) {
+        if (typeof pokemon === {}) {
+            pokemonList.push(pokemon);
+        } else {
+            alert('The Pokemon must be defined as and object.');
+        }
+    }
+
+    function getAll() {
+        return pokemonList;
+    }
+
+    return {
+        add,
+        getAll
+    };
+
+})();
 
 /* for loop function
 // iterates over every pokemon
@@ -20,7 +41,7 @@ for (let i=0; i<pokemonList.length; i++) {
 
 
 // forEach method that iterates through the pokemonList array
-pokemonList.forEach(function(pokemon) {
+pokemonRepository.getAll().forEach(function(pokemon) {
     document.write(`${pokemon.name} (height: ${pokemon.height}) `);
     
     // highlights the special pokemon (taller than 1)
