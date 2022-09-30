@@ -1,1 +1,19 @@
 
+* {
+    box-sizing: border-box;
+}
+
+.button-style {
+    border: solid 1;
+    background-color: rgb(139, 219, 192);
+    width: 110px;
+    padding: 12px 20px;
+    text-decoration: none;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.button-style:hover {
+    background-color: rgb(245, 245, 128);
+    transform: scale(1.05);
+}
