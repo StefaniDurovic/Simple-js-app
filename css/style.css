@@ -17,3 +17,8 @@
     background-color: rgb(245, 245, 128);
     transform: scale(1.05);
 }
+
+#image {
+    width: 70%;
+    height: auto;
+}

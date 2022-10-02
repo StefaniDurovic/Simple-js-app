@@ -1,47 +1,103 @@
+
+// inserting an image - need to figure out the styling
+let img = document.createElement("img"); 
+ 
+img.src = "img/International_Pokémon_logo.svg.png"; 
+let src = document.getElementById("image"); 
+ 
+src.appendChild(img);
+
+
 // IIFE
 let  pokemonRepository = (function() {
 
-   let pokemonList = [   
-        {name:'Pidgeotto', height:'1', types:['flying','normal']},
-        {name:'Venomoth', height:'1.5', types:['bug','poison']},
-        {name:'Sandshrew', height:'0.6', types:['ground']}
-    ];
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          json.results.forEach(function (item) {
+            let pokemon = {
+              name: item.name,
+              detailsUrl: item.url
+            };
+            add(pokemon);
+            console.log(pokemon);
+          });
+        }).catch(function (e) {
+          console.error(e);
+        })
+      }
+
+      function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+          return response.json();
+        }).then(function (details) {
+          item.imageUrl = details.sprites.front_default;
+          item.height = details.height;
+          item.types = details.types;
+        }).catch(function (e) {
+          console.error(e);
+        });
+      }
 
     function add(pokemon) {
-        if (typeof pokemon === {}) {
+        if (
+            typeof pokemon === "object" &&
+            "name" in pokemon
+          ) {
             pokemonList.push(pokemon);
-        } else {
-            alert('The Pokemon must be defined as and object.');
-        }
+          } else {
+            console.log("The Pokemon must be defined as an object.");
+          }
+        
+            //  const validKeyNames = ['name', 'height', 'types'];
+
+            //  if (typeof pokemon === 'object'
+            //  && Object.keys(pokemon).every(keyName => validKeyNames.includes(keyName))) {
+            //    pokemonList.push(pokemon);
+            //  } else {
+            //      alert('The Pokemon must be defined as an object.');
+            //  }
     }
 
     function getAll() {
         return pokemonList;
     }
 
-function addListItem(pokemon) {
-    let pokemonList = document.querySelector('.pokemon-list');
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
 
-    let listItem = document.createElement('li');
+        let listItem = document.createElement('li');
 
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add("button-style");
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add("button-style");
 
-    listItem.appendChild(button);
-    pokemonList.appendChild(listItem);
+        listItem.appendChild(button);
+        pokemonList.appendChild(listItem);
 
-    button.addEventListener('click', showDetails(pokemon));
-}
+        button.addEventListener('click', function () {
+        showDetails(pokemon)
+        });
+    }
 
-function showDetails(pokemon) {
-    console.log(pokemon);
-} 
+    function showDetails(pokemon) {
+        pokemonRepository.loadDetails(pokemon).then(function() {
+          console.log(pokemon);
+        });
+      }
 
     return {
         add,
         getAll,
-        addListItem
+        addListItem,
+        loadList,
+        loadDetails,
+        showDetails
     };
 
 })();
@@ -65,6 +121,12 @@ pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
 });
 
+pokemonRepository.loadList().then(function() {
+    // Now the data is loaded!
+    pokemonRepository.getAll().forEach(function(pokemon){
+      pokemonRepository.addListItem(pokemon);
+    });
+  });
 
 
     
