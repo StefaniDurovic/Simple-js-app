@@ -6,7 +6,7 @@
 .button-style {
     border: solid 1;
     background-color: rgb(139, 219, 192);
-    width: 110px;
+    width: 400px;
     padding: 12px 20px;
     text-decoration: none;
     margin: 10px 0;
@@ -21,6 +21,14 @@
 #image {
     width: 70%;
     height: auto;
+}
+
+ul {
+  padding-top: 20px;
+}
+
+.navbar-brand {
+  font-size: 35px;
 }
 
 html, 
