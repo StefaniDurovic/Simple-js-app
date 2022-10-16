@@ -1,13 +1,3 @@
-
-// inserting an image - need to figure out the styling
-let img = document.createElement("img"); 
- 
-img.src = "img/International_Pokémon_logo.svg.png"; 
-let src = document.getElementById("image"); 
- 
-src.appendChild(img);
-
-
 // IIFE
 let  pokemonRepository = (function() {
 
@@ -187,6 +177,17 @@ let  pokemonRepository = (function() {
 
     }
 
+
+    //here I tried something to make the search bar work
+  const searchButton = document.getElementById('search-button');
+  const searchInput = document.getElementById('search-input');
+  searchButton.addEventListener('click', () => {
+    const inputValue = searchInput.value;
+    if (inputValue === pokemon) {
+      showDetails(pokemon)
+    }
+  });
+
     return {
         add,
         getAll,
@@ -197,6 +198,8 @@ let  pokemonRepository = (function() {
     };
 
 })();
+
+
 
 
 /* FOR loop function
@@ -223,6 +226,12 @@ pokemonRepository.loadList().then(function() {
       pokemonRepository.addListItem(pokemon);
     });
   });
+
+
+   
+ 
+
+ 
 
 
   

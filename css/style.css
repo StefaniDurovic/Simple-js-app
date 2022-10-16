@@ -3,6 +3,16 @@
     box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(236, 232, 232);
+}
+
+.logo {
+  display: inline-block;
+  width: 50px;
+  height: auto;
+}
+
 .button-style {
     border: solid 1;
     background-color: rgb(139, 219, 192);
@@ -11,6 +21,19 @@
     text-decoration: none;
     margin: 10px 0;
     cursor: pointer;
+}
+
+#search-button {
+  background-color: rgb(245, 245, 128);
+  color: black;
+}
+
+#search-button:hover {
+  background-color: rgb(139, 219, 192);
+}
+
+#search-button:active {
+  transform: scale(1.05);
 }
 
 .button-style:hover {
@@ -29,6 +52,7 @@ ul {
 
 .navbar-brand {
   font-size: 35px;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 html, 

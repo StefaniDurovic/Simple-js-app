@@ -6,16 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple JS App</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <nav class="navbar navbar-light bg-info">
-    <span class="navbar-brand mb-0 display-1">Pokedex</span>
-  </nav>
-
-    <div class="container">
+   <nav class="navbar navbar-light bg-info">
+        <a href="#" class="navbar-brand">
+            <img src="img/pokeball_logo.png" class="logo d-inline-block" alt="pokemon icon">
+            <span class="navbar-brand mb-0 h1">Pokedex</span>
+        </a>
         
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" id="search-input" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" id="search-button" type="submit">Search</button>
+        </form>
+   </nav>
+
+    <!-- List of Pokemons -->
+    <div class="container">
         <div class="row">
             <div class="col-4"></div>
             <ul class="pokemon-list list-group col-4 list-unstyled "></ul>
@@ -23,33 +34,22 @@
         </div>
     </div>
 
-    
-    <!-- Button trigger modal -->
-	<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-      </button> -->
-      
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-          </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-      </div>
-
-    
-    <div id="modal-container"></div>
-
-    <div id="image"></div> 
+        <div class="modal-body">
+            ...
+        </div>
+        </div>
+    </div>
+    </div>
 
 
 
