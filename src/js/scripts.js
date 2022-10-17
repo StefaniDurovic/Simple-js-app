@@ -107,44 +107,6 @@ let  pokemonRepository = (function() {
           modalTitle.append(pokemonName);
           modalBody.append(pokemonHeight);
           modalBody.append(imageElement);
-          
-
-
-        // // Clear all existing modal content
-        // modalContainer.innerHTML = "";
-        
-        // // creating the modal
-        // let modal = document.createElement("div");
-        // modal.classList.add("modal");
-        // modal.classList.add("group-list-item");
-
-        // // Add the new modal content
-        // let closeButtonElement = document.createElement("button");
-        // closeButtonElement.classList.add("modal-close");
-        // closeButtonElement.classList.add("btn");
-        // closeButtonElement.innerText = "Close";
-        // closeButtonElement.addEventListener('click', hideModal);
-
-        // let titleElement = document.createElement("h1");
-        // titleElement.innerText = pokemon.name;
-
-        // let contentElement = document.createElement("p");
-        // contentElement.innerText = 'Height:' + pokemon.height;
-
-        // let imageElement = document.createElement("img");
-        // imageElement.setAttribute("src", pokemon.imageUrl);
-        // imageElement.setAttribute("width", "304");
-        // imageElement.setAttribute("height", "228");
-        // imageElement.setAttribute("alt", "pokemon picture");
-
-        // //append the dynnamic elements to modal
-        // modal.appendChild(closeButtonElement);
-        // modal.appendChild(titleElement);
-        // modal.appendChild(contentElement);
-        // modal.appendChild(imageElement);
-        // modalContainer.appendChild(modal);
-
-        // modalContainer.classList.add("is-visible");
 
       }    
       ////////////////////////////////////////////////////////////////
@@ -178,7 +140,7 @@ let  pokemonRepository = (function() {
     }
 
 
-    //here I tried something to make the search bar work
+  //here I tried something to make the search bar work
   const searchButton = document.getElementById('search-button');
   const searchInput = document.getElementById('search-input');
   searchButton.addEventListener('click', () => {
@@ -200,22 +162,6 @@ let  pokemonRepository = (function() {
 })();
 
 
-
-
-/* FOR loop function
-// iterates over every pokemon
-for (let i=0; i<pokemonList.length; i++) {
-    document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}) `);
-    
-    // highlights the special pokemon (taller than 1)
-    if (pokemonList[i].height>1) {
-        document.write (' - Wow, that\'s big! ')
-    }
-
-    document.write('</br>') 
-}*/
-
-
 // forEach method that iterates through the pokemonList array
 pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
@@ -226,14 +172,3 @@ pokemonRepository.loadList().then(function() {
       pokemonRepository.addListItem(pokemon);
     });
   });
-
-
-   
- 
-
- 
-
-
-  
-
-    
