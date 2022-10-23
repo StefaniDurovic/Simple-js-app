@@ -10,10 +10,10 @@ This is a very simple, one-page app that allows users to get some basic info abo
 
 ## Built with
 
-* HTML, CSS, JavaScript
+* **HTML, CSS, JavaScript**
 
-* Framework: Bootstrap
+* Framework: **Bootstrap**
 
-* Library: jQuery
+* Library: **jQuery**
 
 * [API](https://pokeapi.co/api/v2/pokemon/?limit=150)
