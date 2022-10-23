@@ -146,8 +146,11 @@ let  pokemonRepository = (function() {
   const searchInput = document.getElementById('search-input');
   searchButton.addEventListener('click', () => {
     const inputValue = searchInput.value;
-    if (inputValue === pokemon) {
-      showDetails(pokemon)
+    if (inputValue === pokemonRepository.loadList.pokemon.name) {
+      let searchedPokemon = inputValue.filter(checkName);
+      function checkName(searchedPokemon) {
+      showDetails(pokemon);
+      }
     }
   });
 
