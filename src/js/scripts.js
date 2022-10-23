@@ -70,6 +70,7 @@ let  pokemonRepository = (function() {
         button.innerText = pokemon.name;
         button.classList.add("button-style");
         button.classList.add("btn");
+        button.classList.add("text-capitalize");
         button.setAttribute("data-toggle", "modal");
         button.setAttribute("data-target", "#exampleModal");
                 
