@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // IIFE
 let  pokemonRepository = (function() {
 
@@ -15,7 +16,6 @@ let  pokemonRepository = (function() {
               detailsUrl: item.url
             };
             add(pokemon);
-            console.log(pokemon);
           });
         }).catch(function (e) {
           console.error(e);
@@ -69,9 +69,9 @@ let  pokemonRepository = (function() {
 
         let button = document.createElement('button');
         button.innerText = pokemon.name;
-        button.classList.add("btn-outline-success");
-        button.classList.add("btn");
-        button.classList.add("w-100");
+        button.classList.add('btn-outline-success');
+        button.classList.add('btn');
+        button.classList.add('w-100');
         button.classList.add('text-capitalize');
         button.setAttribute('data-toggle', 'modal');
         button.setAttribute('data-target', '#exampleModal');
@@ -81,7 +81,6 @@ let  pokemonRepository = (function() {
 
         button.addEventListener('click', function () {
         showDetails(pokemon);
-        console.log(pokemon);
         });
     }
 
@@ -120,14 +119,15 @@ let  pokemonRepository = (function() {
         modalContainer.classList.remove('is-visible');
       }
 
-      modalContainer.addEventListener('click', (e) => {
-        // Since this is also triggered when clicking INSIDE the modal
-        // We only want to close if the user clicks directly on the overlay
-        let target = e.target;
-        if (target === modalContainer) {
-          hideModal();
-        }
-      });
+      // modalContainer.addEventListener('click', (e) => {
+      //   e.preventDefault();
+      //   // Since this is also triggered when clicking INSIDE the modal
+      //   // We only want to close if the user clicks directly on the overlay
+      //   let target = e.target;
+      //   if (target === modalContainer) {
+      //     hideModal();
+      //   }
+      // });
 
       window.addEventListener('keydown', (e) => {
         let modalContainer = document.querySelector('#modal-container');
@@ -146,14 +146,15 @@ let  pokemonRepository = (function() {
   //here I tried something to make the search bar work
   const searchButton = document.getElementById('search-button');
   const searchInput = document.getElementById('search-input');
-  searchButton.addEventListener('click', () => {
+  searchButton.addEventListener('click', (e) => {
+    e.preventDefault();
     const inputValue = searchInput.value;
-    if (inputValue === pokemonRepository.loadList.pokemon.name) {
-      let searchedPokemon = inputValue.filter(checkName);
-      function checkName(searchedPokemon) {
-      showDetails(pokemon);
-      }
-    }
+    console.log(inputValue);
+    const filteredPokemon = pokemonList.filter((pokemon) =>
+      pokemon.name.includes(inputValue)
+    );
+    pokemonList = filteredPokemon;
+    console.log(pokemonList);
   });
 
     return {
