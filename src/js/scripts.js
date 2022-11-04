@@ -4,7 +4,6 @@ let  pokemonRepository = (function() {
 
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-    let modalContainer = document.querySelector('#modal-container');
 
     function loadList() {
         return fetch(apiUrl).then(function (response) {
@@ -94,7 +93,6 @@ let  pokemonRepository = (function() {
 
           let modalBody = $('.modal-body');
           let modalTitle = $('.modal-title');
-          let modalHeader = $('.modal-header');
 
           // empty previous content
           modalBody.empty();
@@ -142,20 +140,31 @@ let  pokemonRepository = (function() {
 
     }
 
+    function filterPokemon(e) {
+      e.preventDefault();
+      const searchInput = document.getElementById('search-input');
+      const inputValue = searchInput.value;
+      console.log(inputValue);
+      const filteredPokemon = pokemonList.filter((pokemon) =>
+        pokemon.name.includes(inputValue)
+      );
+      pokemonList = filteredPokemon;
+      // get the pokemonlist element
+      const pokemonListElement = document.querySelector('.pokemon-list');
+      // clear of any children
+      pokemonListElement.innerHTML = '';
+      // render the filtered list
+      pokemonList.forEach((pokemon) => {
+        addListItem(pokemon);
+      });
+    }
+
+
 
   //here I tried something to make the search bar work
   const searchButton = document.getElementById('search-button');
-  const searchInput = document.getElementById('search-input');
-  searchButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    const inputValue = searchInput.value;
-    console.log(inputValue);
-    const filteredPokemon = pokemonList.filter((pokemon) =>
-      pokemon.name.includes(inputValue)
-    );
-    pokemonList = filteredPokemon;
-    console.log(pokemonList);
-  });
+  searchButton.addEventListener('click', filterPokemon );
+  // search on value change
 
     return {
         add,
