@@ -137,7 +137,6 @@ let  pokemonRepository = (function() {
 
     }
 
-
   // Search method
     function filterPokemon (e) {
       e.preventDefault();
@@ -158,7 +157,6 @@ let  pokemonRepository = (function() {
 
     const searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', filterPokemon);
-
   
     return {
         add,
