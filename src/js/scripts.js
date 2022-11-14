@@ -3,7 +3,6 @@ let  pokemonRepository = (function() {
 
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-    let modalContainer = document.querySelector('#modal-container');
 
     function loadList() {
         return fetch(apiUrl).then(function (response) {
@@ -93,7 +92,6 @@ let  pokemonRepository = (function() {
           
           let modalBody = $('.modal-body');
           let modalTitle = $('.modal-title');
-          let modalHeader = $('.modal-header');
 
           // empty previous content
           modalBody.empty();
@@ -139,18 +137,29 @@ let  pokemonRepository = (function() {
 
     }
 
-    // Search method
-    const searchButton = document.getElementById('search-button');
-    const searchInput = document.getElementById('search-input');
-    searchButton.addEventListener('click', (e) => {
-      e.preventDefault(); // this prevents the page from reloading every time the search button is clicked 
+
+  // Search method
+    function filterPokemon (e) {
+      e.preventDefault();
+      const searchInput = document.getElementById('search-input');
       const inputValue = searchInput.value;
       const filteredPokemon = pokemonList.filter((pokemon) =>
-        pokemon.name.includes(inputValue)
-      );
+        pokemon.name.includes(inputValue));
       pokemonList = filteredPokemon;
-    });
+      // get the pokemonlist element
+      const pokemonListElement = document.querySelector('.pokemon-list');
+      // clear of any children
+      pokemonListElement.innerHTML = '';
+      // render the filtered list
+      pokemonList.forEach((pokemon) => {
+        addListItem(pokemon);
+      });
+    }
 
+    const searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', filterPokemon);
+
+  
     return {
         add,
         getAll,
