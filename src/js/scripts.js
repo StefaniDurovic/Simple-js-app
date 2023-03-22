@@ -141,7 +141,7 @@ let  pokemonRepository = (function() {
     function filterPokemon (e) {
       e.preventDefault();
       const searchInput = document.getElementById('search-input');
-      const inputValue = searchInput.value;
+      const inputValue = searchInput.value.toLowerCase();
       const filteredPokemon = pokemonList.filter((pokemon) =>
         pokemon.name.includes(inputValue));
       pokemonList = filteredPokemon;
